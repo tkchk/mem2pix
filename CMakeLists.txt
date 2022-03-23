@@ -31,6 +31,9 @@ if (MSVC)
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	file (GLOB FILE_SOURCES_PLATFORM ${DIR_SOURCES}/linux/*.cpp)
 	file (GLOB FILE_HEADERS_PLATFORM ${DIR_SOURCES}/linux/*.h)
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        file (GLOB FILE_SOURCES_PLATFORM ${DIR_SOURCES}/linux/*.cpp)
+        file (GLOB FILE_HEADERS_PLATFORM ${DIR_SOURCES}/linux/*.h)
 endif ()
 list (APPEND FILE_SOURCES ${FILE_SOURCES_PLATFORM})
 list (APPEND FILE_HEADERS ${FILE_HEADERS_PLATFORM})
@@ -44,6 +47,10 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 	target_include_directories (${PROJECT_NAME} PRIVATE
 		${DIR_SOURCES}/linux
 	)
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        target_include_directories (${PROJECT_NAME} PRIVATE
+                ${DIR_SOURCES}/linux
+        )
 endif ()
 
 target_include_directories (${PROJECT_NAME} PRIVATE
